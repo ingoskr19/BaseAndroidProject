@@ -1,0 +1,44 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="ButtonDisable">
+        <item name="colorPrimary">@color/colorGray</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="ButtonEnable" parent="ButtonDisable">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorGray</item>
+    </style>
+
+    <style name="normalButton" parent="Base.Theme.AppCompat">
+        <item name="android:background">@drawable/selector_normal_button</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="editTextInput" parent="Base.Theme.AppCompat">
+        <item name="hintTextColor">@color/colorTint</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="loginCheckbox">
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="loadinMessage">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorGray</item>
+    </style>
+
+</resources>
