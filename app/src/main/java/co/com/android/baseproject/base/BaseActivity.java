@@ -1,7 +1,5 @@
 package co.com.android.baseproject.base;
 
-import android.app.Activity;
-import android.content.ContextWrapper;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,27 +8,29 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import javax.inject.Inject;
 
 import co.com.android.baseproject.R;
+import co.com.android.baseproject.session.Session;
 import co.com.android.baseproject.util.InternetValidator;
-import co.com.android.baseproject.util.PreferencesUtil;
-import dagger.android.support.DaggerAppCompatActivity;
+import dagger.hilt.android.AndroidEntryPoint;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 /**
  * Created By oscar.vergara on 6/08/2020
  */
-public abstract class BaseActivity extends DaggerAppCompatActivity implements BaseView {
+@AndroidEntryPoint
+public class BaseActivity extends AppCompatActivity {
 
     @Inject
-    protected PreferencesUtil preferences;
+    protected Session session;
 
     @Inject
-    protected InternetValidator internetValidator;
+    public InternetValidator internetValidator;
 
     protected View loading;
 
@@ -74,10 +74,5 @@ public abstract class BaseActivity extends DaggerAppCompatActivity implements Ba
             dialog.getWindow().setAttributes(layoutParams);
         }
         dialog.show();
-    }
-
-    @Override
-    public Activity getActivity() {
-        return this;
     }
 }

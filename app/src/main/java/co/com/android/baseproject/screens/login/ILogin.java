@@ -1,29 +1,34 @@
 package co.com.android.baseproject.screens.login;
 
-import co.com.android.baseproject.base.BaseCallback;
-import co.com.android.baseproject.base.BaseView;
-import co.com.android.baseproject.entities.Login;
+import co.com.android.baseproject.screens.login.model.Login;
+import co.com.android.baseproject.screens.login.model.LoginDTO;
+import io.reactivex.Single;
+import retrofit2.Call;
 
 /**
  * Created By oscar.vergara on 6/08/2020
  */
 public interface ILogin {
 
-    interface View extends BaseView {
-        void onLoginSuccess();
-    }
-
-    interface Presenter {
+    interface ViewModel {
         void doLogin(Login login);
-        boolean validateInputs(String email, String password);
+        void getInfoSaved();
     }
 
-    interface Callback extends BaseCallback {
-        void onLoginSuccess();
+    interface Intectaror {
+        //Api
+        Single<LoginDTO> login(Login login);
+        //Local
+        Single<Login> getLocalInfo(String key);
     }
 
-    interface Model {
-        void setCallback(ILogin.Callback presenter);
-        void doLogin(Login login);
+    interface Repository {
+        //Api
+        Call<LoginDTO> loginApi(String email, String password);
+
+        //Local
+        Login loginLocal(String key);
+        void removeLocalLogin(String key);
+        void saveLoginLocal(String key, Login login);
     }
 }

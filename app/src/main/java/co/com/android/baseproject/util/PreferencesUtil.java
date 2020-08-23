@@ -1,9 +1,12 @@
 package co.com.android.baseproject.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.util.Set;
+
+import dagger.hilt.android.qualifiers.ActivityContext;
 
 import static android.content.Context.MODE_PRIVATE;
 import static co.com.android.baseproject.util.Constants.PREFERENCE_NAME;
@@ -11,12 +14,17 @@ import static co.com.android.baseproject.util.Constants.PREFERENCE_NAME;
 /**
  * Created By oscar.vergara on 8/08/2020
  */
-public class PreferencesUtil{
+public class PreferencesUtil {
 
+    private Context activity;
     private static SharedPreferences sharedPreferences;
-    
+
+    public PreferencesUtil(@ActivityContext Context context) {
+        this.activity = context;
+    }
+
     @SuppressWarnings({"unchecked"})
-    public static <T> void setPreference(Activity activity, String name, T value){
+    public <T> void setPreference(String name, T value){
         sharedPreferences = activity.getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE);
 
         if(sharedPreferences.contains(name)){
@@ -39,7 +47,7 @@ public class PreferencesUtil{
     }
 
     @SuppressWarnings({"unchecked"})
-    public static <T> Object getPreference(Activity activity, String name, T defaultValue){
+    public <T> Object getPreference(String name, T defaultValue){
         sharedPreferences = activity.getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE);
 
         if(defaultValue instanceof Boolean) {
@@ -58,7 +66,7 @@ public class PreferencesUtil{
         return null;
     }
 
-    public static void removePreference(Activity activity, String name){
+    public void removePreference(String name){
         sharedPreferences = activity.getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE);
         sharedPreferences.edit().remove(name).apply();
     }

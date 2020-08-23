@@ -44,6 +44,5 @@
     <string name="login_btn_login_text">Ingresar</string>
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Password</string>
-    <string name="login_remember_user_text">Recordar usuario</string>
-    <string name="login_remember_pass_text">Recordar contraseña</string>
+    <string name="login_remember_text">Remember me</string>
 </resources>
